@@ -47,3 +47,13 @@ pointer-events: none;
 }
 
 body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+
+.selectTheme {
+    width: 45%;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.selected {
+    border: 8px solid #aaa;
+}

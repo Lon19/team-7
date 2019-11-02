@@ -35,6 +35,7 @@ const routing = (
                     />{' '}
                     DARE
                 </Navbar.Brand>
+                <a className="float-right" href="/customise">Customise</a>
             </Navbar>
             <Container>
             <Switch>
@@ -44,7 +45,7 @@ const routing = (
                 <Route exact path="/user/:id/mentalhealth" component={BubbleChart} />
                 <Route exact path="/user/:id/organisationalculture" component={PieChart} />
                 <Route exact path="/user/:id/workselfconfidence" component={RadarMap} />
-                <Route exact path="/user/:id/customise" component={Customise}/>
+                <Route exact path="/customise" component={Customise}/>
                 <Route exact path="/user/:id/adjustments" component={Adjustments} />
 
                 <Route component={Notfound} />
