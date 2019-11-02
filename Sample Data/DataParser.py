@@ -26,7 +26,7 @@ class DataParser():
     def getQuestions(self):
         questionResponse = []
 
-        if self.isUsers:
+        if not self.isUsers:
             questionResponse.append(json.dumps({'FormName': self.questions[1]}))
             questionResponse.append(json.dumps({'username': self.questions[2]}))
             questionResponse.append(json.dumps({'iD': self.questions[-2]}))
@@ -39,8 +39,19 @@ class DataParser():
                 questionResponse.append(json.dumps(questionJSON))
 
         else:
+            for record in self.responses:
+                questionJSON = {}
+                questionJSON['id'] = record[0]
+                questionJSON['gender'] = record[1]
+                questionJSON['age'] = record[2]
+                questionJSON['diagnosis'] = record[3]
+                questionJSON['income'] = record[4]
+                questionJSON['education'] = record[5]
+                questionJSON['ethnicity'] = record[6]
+                questionJSON['password'] = record[7]
+                questionJSON['email'] = record[8]
+                questionResponse.append(json.dumps(questionJSON))
 
-            pass
         return questionResponse
 
     def getResponses(self):
