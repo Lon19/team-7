@@ -8,7 +8,7 @@ class QuestionType(models.Model):
 
 class Question(models.Model):
     questionnaireID = models.ForeignKey(Questionnaire, on_delete=models.CASCADE) #check
-    questionType = models.ForeignKey(QuestionType, on_delete=models.CASCADE)
+    questionType = models.IntegerField()#models.ForeignKey(QuestionType, on_delete=models.CASCADE)
     questionText = models.CharField(max_length=200)
 
 class User(models.Model):
@@ -31,6 +31,6 @@ class AnswerType(models.Model):
 
 class Answers(models.Model):
     questionID=models.ForeignKey(Question, on_delete=models.CASCADE)
-    userID=models.ForeignKey(User, on_delete=models.CASCADE)
+    userID=models.IntegerField()#models.ForeignKey(User, on_delete=models.CASCADE)
     date=models.DateField()
     answer=models.IntegerField()
