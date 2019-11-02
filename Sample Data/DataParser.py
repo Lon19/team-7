@@ -26,7 +26,7 @@ class DataParser():
     def getQuestions(self):
         questionResponse = []
 
-        if isUsers:
+        if self.isUsers:
             questionResponse.append(json.dumps({'FormName': self.questions[1]}))
             questionResponse.append(json.dumps({'username': self.questions[2]}))
             questionResponse.append(json.dumps({'iD': self.questions[-2]}))
@@ -40,7 +40,7 @@ class DataParser():
 
         else:
 
-
+            pass
         return questionResponse
 
     def getResponses(self):
@@ -48,7 +48,7 @@ class DataParser():
 
 
 data = DataParser()
-#data.parseFile("wpforms-Autistica-8211-Mental-Health.csv", False)
-data.parseFile("Participant-attribute-data.csv", True)
+data.parseFile("wpforms-Autistica-8211-Mental-Health.csv", False)
+#data.parseFile("Participant-attribute-data.csv", True)
 
 print(data.getQuestions())
