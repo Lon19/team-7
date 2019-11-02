@@ -11,6 +11,10 @@ import App from './App';
 import User from './User'
 import Researcher from './Researcher'
 import Notfound from './Notfound'
+import MentalHealth from './MentalHealth'
+import OrganisationalCulture from './OrganisationalCulture'
+import WorkSelfConfidence from './WorkSelfConfidence'
+import Adjustments from './Adjustments'
 
 
 const routing = (
@@ -31,8 +35,13 @@ const routing = (
             <Container>
             <Switch>
                 <Route exact path="/" component={App} />
-                <Route path="/user/:id" component={User} />
-                <Route path="/researcher" component={Researcher} />
+                <Route exact path="/user/:id" component={User} />
+                <Route exact path="/researcher" component={Researcher} />
+                <Route exact path="/user/:id/mentalhealth" component={MentalHealth} />
+                <Route exact path="/user/:id/organisationalculture" component={OrganisationalCulture} />
+                <Route exact path="/user/:id/workselfconfidence" component={WorkSelfConfidence} />
+                <Route exact path="/user/:id/adjustments" component={Adjustments} />
+
                 <Route component={Notfound} />
             </Switch>
             </Container>
