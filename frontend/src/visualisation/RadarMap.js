@@ -23,7 +23,7 @@ class RadarMap extends React.Component {
 
             fetch("http://localhost:8000/user/22222222/visualisation/wpforms-Autistica-8211-Work-Self-Confidence")
             .then(res => {
-                console.log(res);
+                console.log(res.json());
                 return res;
             });
 			var data = [

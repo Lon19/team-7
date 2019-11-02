@@ -79,12 +79,14 @@ def user_questionnaire_responses(request, user_id, questionnaire_name): #request
             mental_health_dict["Anxiety"] = anxiety[i]
             mental_health_dict["Stress"] = stress[i]
             list_of_dicts.append(mental_health_dict)
+            list_of_dicts.append(',')
 
 
         
         return HttpResponse(list_of_dicts)
     else:
         ques_and_resp = [{'question': question, 'response': response} for question, response in zip(questions, responses)]
+        ques_and_resp = json.dumps(ques_and_resp)
         return HttpResponse(ques_and_resp)
 
 def researcher_home(request, user_id):
