@@ -41,22 +41,35 @@ def user_questionnaire_responses(request, user_id, questionnaire_name): #request
     response = parser.getResponses()
     responses = []
     for vals in response:
-        vals = vals[2:8]
         if str(user_id) in vals:
             for i, val in enumerate(vals):
                 if val == "Strongly disagree" or val == "Did not apply to me at all":
+                    vals[i] = 0
+                elif val == "Somewhat disagree" or val == "A little" or val == "Applied to me to some degree":
                     vals[i] = 1
-                elif val == "Somewhat disagree" or val == "A little":
+                elif val == "Somewhat agree" or val == "Moderate" or val == "Applied to me to a considerable degree":
                     vals[i] = 2
-                elif val == "Somewhat agree" or val == "Applied to me to some degree" or val == "Moderate":
+                elif val == "Strongly agree" or val == "Applied to me very much":
                     vals[i] = 3
-                elif val == "Strongly agree":
-                    vals[i] = 4
-            vals = vals[1:]
+            vals = vals[3:len(vals)-2]
             responses.append(vals)
 
-    ques_and_resp = [{'question': question, 'response': response} for question, response in zip(questions, responses)]
-    return HttpResponse(ques_and_resp)
+    if "Mental-Health" in questionnaire_name:
+
+        #this might be the worst code i've ever written, i am terribly sorry
+        depression = sum(responses[2]) / len(responses[2]) + sum(responses[4]) / len(responses[4]) + sum(responses[9]) / len(responses[9]) + sum(responses[15]) / len(responses[15]) + sum(responses[16]) / len(responses[16]) + sum(responses[20]) / len(responses[20])
+        depression = depression * 2
+        anxiety = sum(responses[1]) / len(responses[1]) + sum(responses[3]) / len(responses[3]) + sum(responses[8]) / len(responses[8]) + sum(responses[14]) / len(responses[14]) + sum(responses[18]) / len(responses[18]) + sum(responses[19]) / len(responses[19])
+        anxiety = anxiety * 2
+        stress = sum(responses[0]) / len(responses[0]) + sum(responses[5]) / len(responses[5]) + sum(responses[7]) / len(responses[7]) + sum(responses[10]) / len(responses[10]) + sum(responses[11]) / len(responses[11]) + sum(responses[13]) / len(responses[13]) + sum(responses[17]) / len(responses[17])
+        stress = stress * 2
+
+        mental_health_dict = {'Depression': depression, 'Anxiety': anxiety, 'Stress': stress}
+        mental_health_json = json.dumps(mental_health_dict)
+        return HttpResponse(mental_health_json)
+    else:
+        ques_and_resp = [{'question': question, 'response': response} for question, response in zip(questions, responses)]
+        return HttpResponse(ques_and_resp)
 
 def researcher_home(request, user_id):
     return HttpResponse()
