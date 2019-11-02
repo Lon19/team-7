@@ -25,7 +25,7 @@ const routing = (
     <Router>
         <div>
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="#">
                     <img
                         alt=""
                         src="../public/logo.jpg"
@@ -33,7 +33,7 @@ const routing = (
                         height="30"
                         className="d-inline-block align-top"
                     />{' '}
-                    React Bootstrap
+                    DARE
                 </Navbar.Brand>
             </Navbar>
             <Container>
