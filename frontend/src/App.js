@@ -2,6 +2,14 @@ import React from 'react'
 import { Form, Button, Container, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleLogin = this.handleLogin.bind(this);
+    }
+    handleLogin() {
+        let path = '/user/1' ;
+        this.props.history.push(path);
+    }
     render() {
         return (
             <Container>
@@ -20,12 +28,13 @@ class App extends React.Component {
                 {/*<Form.Group controlId="formBasicCheckbox">*/}
                 {/*    <Form.Check type="checkbox" label="Check me out" />*/}
                 {/*</Form.Group>*/}
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button variant="primary" type="button" onClick = {this.handleLogin}>
+                    Login
                 </Button>
             </Form>
             </Container>
         )
     }
+
 }
 export default App
