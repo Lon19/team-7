@@ -40,9 +40,9 @@ const routing = (
                 <Route exact path="/" component={App} />
                 <Route exact path="/user/:id" component={User} />
                 <Route exact path="/researcher" component={Researcher} />
-                <Route exact path="/vis" component={BubbleChart} />
-                <Route exact path="/vis2" component={RadarMap} />
-                <Route exact path="/vis3" component={PieChart} />
+                {/*<Route exact path="/vis" component={BubbleChart} />*/}
+                {/*<Route exact path="/vis2" component={RadarMap} />*/}
+                {/*<Route exact path="/vis3" component={PieChart} />*/}
                 <Route exact path="/user/:id/mentalhealth" component={BubbleChart} />
                 <Route exact path="/user/:id/organisationalculture" component={PieChart} />
                 <Route exact path="/user/:id/workselfconfidence" component={RadarMap} />

@@ -14,7 +14,7 @@
 .left-up {
     left: 0;
     top: 10%;
-    background-color: #34ce57;
+    background-color: #006174;
 
     /*background-color: #111;*/
 }
@@ -22,7 +22,7 @@
 .left-down {
     left: 0;
     bottom: 0;
-    background-color: #ffeeba;
+    background-color: #E9B9A5;
 
     /*background-color: #111;*/
 }
@@ -31,14 +31,14 @@
 .right-up {
     right: 0;
     top: 10%;
-    background-color: goldenrod;
+    background-color: #9DD5CC;
     /*background-color: red;*/
 }
 
 .right-down {
     right: 0;
     bottom: 0;
-    background-color: #2F6FAD;
+    background-color: #B24C5A;
     /*background-color: red;*/
 }
 
