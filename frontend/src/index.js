@@ -11,6 +11,7 @@ import App from './App';
 import User from './User'
 import Researcher from './Researcher'
 import BubbleChart from './visualisation/BubbleChart'
+import Customise from './Customise'
 import RadarMap from './visualisation/RadarMap'
 import PieChart from './visualisation/PieChart'
 import Notfound from './Notfound'
@@ -40,15 +41,14 @@ const routing = (
                 <Route exact path="/" component={App} />
                 <Route exact path="/user/:id" component={User} />
                 <Route exact path="/researcher" component={Researcher} />
-                {/*<Route exact path="/vis" component={BubbleChart} />*/}
-                {/*<Route exact path="/vis2" component={RadarMap} />*/}
-                {/*<Route exact path="/vis3" component={PieChart} />*/}
                 <Route exact path="/user/:id/mentalhealth" component={BubbleChart} />
                 <Route exact path="/user/:id/organisationalculture" component={PieChart} />
                 <Route exact path="/user/:id/workselfconfidence" component={RadarMap} />
+                <Route exact path="/user/:id/customise" component={Customise}/>
                 <Route exact path="/user/:id/adjustments" component={Adjustments} />
 
                 <Route component={Notfound} />
+
             </Switch>
             </Container>
         </div>
