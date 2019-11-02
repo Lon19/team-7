@@ -1,5 +1,6 @@
 import React from 'react'
-import { Form, Button, Container, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Navbar } from "react-bootstrap";
+import './App.css'
 
 class App extends React.Component {
     constructor(props) {
@@ -29,17 +30,30 @@ class App extends React.Component {
     }
     render() {
         return (
-            <Container>
-                <Form>
+            <Container className="ioana">
+            {/*    <Navbar bg="dark" variant="dark">*/}
+            {/*    <Navbar.Brand href="#home">*/}
+            {/*        <img*/}
+            {/*            alt=""*/}
+            {/*            src="/logo.svg"*/}
+            {/*            width="30"*/}
+            {/*            height="30"*/}
+            {/*            className="d-inline-block align-top"*/}
+            {/*        />{' '}*/}
+            {/*        React Bootstrap*/}
+            {/*    </Navbar.Brand>*/}
+            {/*</Navbar>,*/}
+                <Form className="text-center">
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>User ID</Form.Label>
                     <Form.Control type="text" name="userID" placeholder="Enter user ID" value={this.state.userID} onChange={this.handleInputChange.bind(this)} onKeyPress={this.handleKeyPress}/>
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Button variant="primary" type="button" onClick = {this.handleLogin}>
+                <Button className="justify-content-center" variant="primary" type="button" onClick = {this.handleLogin}>
                     Login
                 </Button>
+
             </Form>
             </Container>
         )

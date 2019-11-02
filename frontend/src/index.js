@@ -14,17 +14,17 @@ import Notfound from './Notfound'
 const routing = (
     <Router>
         <div>
-            <ul>
-                <li>
-                    <Link to="/">Login</Link>
-                </li>
-                <li>
-                    <Link to="/user">User</Link>
-                </li>
-                <li>
-                    <Link to="/researcher">Researcher</Link>
-                </li>
-            </ul>
+            {/*<ul>*/}
+            {/*    <li>*/}
+            {/*        <Link to="/">Login</Link>*/}
+            {/*    </li>*/}
+            {/*    <li>*/}
+            {/*        <Link to="/user">User</Link>*/}
+            {/*    </li>*/}
+            {/*    <li>*/}
+            {/*        <Link to="/researcher">Researcher</Link>*/}
+            {/*    </li>*/}
+            {/*</ul>*/}
             <Switch>
                 <Route exact path="/" component={App} />
                 <Route path="/user/:id" component={User} />
