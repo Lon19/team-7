@@ -10,6 +10,7 @@ import App from './App';
 // import * as serviceWorker from './serviceWorker';
 import User from './User'
 import Researcher from './Researcher'
+import BubbleChart from './visualisation/BubbleChart'
 import Notfound from './Notfound'
 
 
@@ -33,6 +34,7 @@ const routing = (
                 <Route exact path="/" component={App} />
                 <Route path="/user/:id" component={User} />
                 <Route path="/researcher" component={Researcher} />
+                <Route path="/vis" component={BubbleChart} />
                 <Route component={Notfound} />
             </Switch>
             </Container>
