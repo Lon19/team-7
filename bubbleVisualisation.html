@@ -31,18 +31,22 @@
 
 <!-- Body tag is where we will append our SVG and SVG objects-->
 <body>
-    <div>
-        <svg width="500" height="500"></svg>
+    <div class="bubbleVisualisation" align="center">
+        <svg class="bubbleVisualisationSvg"></svg>
     </div>
 </body>
 
 <!-- Load in the d3 library -->
 <script src="lib/d3.v5.js"></script>
 <script>
-
+var width = window.innerWidth*2/5;
+d3.select(".bubbleVisualisationSvg")
+.style("width", width)
+.style("height", width);
+  
 var svg = d3.select("svg"),
     margin = 20,
-    diameter = +svg.attr("width"),
+    diameter = width,
     g = svg.append("g").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
 var color = d3.scaleLinear()
@@ -54,7 +58,9 @@ var pack = d3.pack()
     .size([diameter - margin, diameter - margin])
     .padding(2);
 
-var root = JSON.parse('{"name":"variants","children":[{"name":"Stress","children":[{"name":"Lack of wind down", "size":30}, {"name":"Overreacting", "size":20}, {"name":"Nervous energy", "size":10}, {"name":"Agitation", "size":30}, {"name":"No relaxation", "size":40}, {"name":"Feeling down", "size":50}, {"name":"Not tolerating people", "size":10}, {"name":"No physical extertion", "size":20}]},{"name":"Depression","children":[{"name":"Negative feelings", "size":30}, {"name":"No initiative", "size":60}, {"name":"Not looking forward", "size":20}, {"name":"Lack of enthusiasm", "size":30}, {"name":"No personality", "size":30}, {"name":"Touchiness", "size":40}]},{"name":"Anxiety","children":[{"name":"Dry mouth", "size":10}, {"name":"Shortness of breath", "size":20}, {"name":"Trembling", "size":30}, {"name":"Worrying", "size":40}, {"name":"Panic", "size":20}, {"name":"Scareness", "size":70}, {"name":"No meaning in life", "size":10}]}]}');
+// d3.json("http://localhost:3000/d.json", function(error, root) {
+  // if (error) throw error;
+var root = JSON.parse('{"name":"variants","children":[{"name":"Stress","children":[{"name":"Lack of wind down", "size":90}, {"name":"Overreacting", "size":70}, {"name":"Nervous energy", "size":50}, {"name":"Agitation", "size":60}, {"name":"No relaxation", "size":90}, {"name":"Feeling down", "size":50}, {"name":"Not tolerating people", "size":90}, {"name":"No physical extertion", "size":60}]},{"name":"Depression","children":[{"name":"Negative feelings", "size":70}, {"name":"No initiative", "size":60}, {"name":"Not looking forward", "size":20}, {"name":"Lack of enthusiasm", "size":30}, {"name":"No personality", "size":30}, {"name":"Touchiness", "size":40}]},{"name":"Anxiety","children":[{"name":"Dry mouth", "size":10}, {"name":"Shortness of breath", "size": 80}, {"name":"Trembling", "size":30}, {"name":"Worrying", "size":40}, {"name":"Panic", "size":20}, {"name":"Scareness", "size":70}, {"name":"No meaning in life", "size":10}]}]}');
 
   root = d3.hierarchy(root)
       .sum(function(d) { return d.size; })
@@ -111,5 +117,6 @@ var root = JSON.parse('{"name":"variants","children":[{"name":"Stress","children
     node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
     circle.attr("r", function(d) { return d.r * k; });
   }
+// });
 
 </script>
