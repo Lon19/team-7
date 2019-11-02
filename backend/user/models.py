@@ -6,6 +6,10 @@ file = "../../Sample Data/wpforms-Autistica-8211-Work-Self-Confidence-10-29-2019
 class Questionnaire(models.Model):
     questionnaireName = models.CharField(max_length=200)
 
+class questionType(models.Model):
+    #questionTypeID = models.IntegerField()
+    questionTypeName = models.CharField(max_length=200)
+
 class QuestionnaireQuestion(models.Model):
     questionnaireID = models.ForeignKey(Questionnaire, on_delete=models.CASCADE) #check
     questionType = models.ForeignKey(questionType, on_delete=models.CASCADE)
@@ -21,18 +25,16 @@ class User(models.Model):
     ethnicity = models.IntegerField()
     password = models.CharField(max_length=64)
 
-class questionType(models.Model):
-    #questionTypeID = models.IntegerField()
-    questionTypeName = models.CharField(max_length=200)
+
 
 class questionTypeOptions(models.Model):
     answerTypeID= models.IntegerField()
     questionID= models.ForeignKey(questionType, on_delete=models.CASCADE)
-    textRef = Models.CharField(max_length=100)
-    progRef = Models.IntegerField()
+    textRef = models.CharField(max_length=100)
+    progRef = models.IntegerField()
 
 class questionAnswer(models.Model):
     questionID=models.ForeignKey(QuestionnaireQuestion, on_delete=models.CASCADE)
-    userID=models.ForeinKey(User, on_delete=models.CASCADE)
+    userID=models.ForeignKey(User, on_delete=models.CASCADE)
     date=models.DateField()
-    answer=IntegerField()
+    answer=models.IntegerField()
