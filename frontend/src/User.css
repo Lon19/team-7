@@ -1,6 +1,7 @@
 
 /* Split the screen in half */
 .split {
+    cursor: pointer;
     height: 45%;
     width: 50%;
     position: fixed;
