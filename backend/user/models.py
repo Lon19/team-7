@@ -12,7 +12,7 @@ class QuestionType(models.Model):
 
 class QuestionnaireQuestion(models.Model):
     questionnaireID = models.ForeignKey(Questionnaire, on_delete=models.CASCADE) #check
-    questionType = models.ForeignKey(questionType, on_delete=models.CASCADE)
+    questionType = models.ForeignKey(QuestionType, on_delete=models.CASCADE)
     questionText = models.CharField(max_length=200)
 
 class User(models.Model):
@@ -29,7 +29,7 @@ class User(models.Model):
 
 class QuestionTypeOptions(models.Model):
     answerTypeID= models.IntegerField()
-    questionID= models.ForeignKey(questionType, on_delete=models.CASCADE)
+    questionID= models.ForeignKey(QuestionType, on_delete=models.CASCADE)
     textRef = models.CharField(max_length=100)
     progRef = models.IntegerField()
 
