@@ -35,9 +35,29 @@ class DataParser():
             for i in range(3,len(self.questions)-2):
                 questionJSON = {}
                 questionJSON['questionText'] = self.questions[i]
-                questionJSON['questionType'] = 1 # Hard coded for now
+                questionJSON['questionType'] = determineQType(i) # Hard coded for now
                 questionResponse.append(json.dumps(questionJSON))
+        else:
+            return # Don't need it for users
 
+
+        return questionResponse
+
+    def determineQType(self):
+        return 1
+
+    def getResponses(self):
+        responses = []
+        if not self.isUsers:
+            for record in self.responses:
+                # Only count from 3 to -3
+                qJSON = {}
+                for i in range(3, len(record)-3):
+                    string = 'q'+str(i)
+                    qJSON[string] = record[i]
+                responses.append(json.dumps(qJSON))
+
+            return # Stub
         else:
             for record in self.responses:
                 questionJSON = {}
@@ -50,9 +70,5 @@ class DataParser():
                 questionJSON['ethnicity'] = record[6]
                 questionJSON['password'] = record[7]
                 questionJSON['email'] = record[8]
-                questionResponse.append(json.dumps(questionJSON))
-
-        return questionResponse
-
-    def getResponses(self):
-        return self.responses
+                responses.append(json.dumps(questionJSON))
+        return responses
