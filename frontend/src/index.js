@@ -12,6 +12,7 @@ import User from './User'
 import Researcher from './Researcher'
 import BubbleChart from './visualisation/BubbleChart'
 import RadarMap from './visualisation/RadarMap'
+import PieChart from './visualisation/PieChart'
 import Notfound from './Notfound'
 
 
@@ -37,6 +38,7 @@ const routing = (
                 <Route path="/researcher" component={Researcher} />
                 <Route path="/vis" component={BubbleChart} />
                 <Route path="/vis2" component={RadarMap} />
+                <Route path="/vis3" component={PieChart} />
                 <Route component={Notfound} />
             </Switch>
             </Container>
