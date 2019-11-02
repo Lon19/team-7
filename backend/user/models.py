@@ -13,12 +13,12 @@ class Question(models.Model):
 
 class User(models.Model):
     userID = models.IntegerField(primary_key=True)
-    gender = models.IntegerField()
-    age = models.IntegerField()
-    diagnosis = models.IntegerField()
-    income = models.IntegerField()
-    education = models.IntegerField()
-    ethnicity = models.IntegerField()
+    gender = models.CharField(max_length=100)
+    age = models.CharField(max_length=100)
+    diagnosis = models.CharField(max_length=100)
+    income = models.CharField(max_length=100)
+    education = models.CharField(max_length=100)
+    ethnicity = models.CharField(max_length=100)
     password = models.CharField(max_length=64)
 
 
