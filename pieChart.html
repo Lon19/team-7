@@ -66,14 +66,16 @@ svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 var key = function(d){ return d.data.label; };
 
 var color = d3.scale.ordinal()
-	.domain(["Lorem ipsum", "dolor sit", "amet", "consectetur", "adipisicing", "elit", "sed", "do", "eiusmod", "tempor", "incididunt"])
-	.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+	.domain(["Mostly agree", "Mostly disagree"])
+	.range(["#98abc5", "#8a89a6"]);
 
 function randomData (){
 	var labels = color.domain();
-	return labels.map(function(label){
-		return { label: label, value: Math.random() }
-	});
+	var data = [0.3, 0.7];
+	return [
+		{ label: labels[0], value: data[0]}, 
+		{ label: labels[1], value: data[1]}
+	];
 }
 
 change(randomData());
