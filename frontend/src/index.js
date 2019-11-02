@@ -11,6 +11,7 @@ import App from './App';
 import User from './User'
 import Researcher from './Researcher'
 import BubbleChart from './visualisation/BubbleChart'
+import Customise from './Customise'
 import Notfound from './Notfound'
 
 
@@ -32,10 +33,12 @@ const routing = (
             <Container>
             <Switch>
                 <Route exact path="/" component={App} />
-                <Route path="/user/:id" component={User} />
-                <Route path="/researcher" component={Researcher} />
-                <Route path="/vis" component={BubbleChart} />
+                <Route exact path="/user/:id" component={User} />
+                <Route exact path="/researcher" component={Researcher} />
+                <Route exact path="/vis" component={BubbleChart} />
+                <Route exact path="/user/:id/customise" component={Customise}/>
                 <Route component={Notfound} />
+
             </Switch>
             </Container>
         </div>
