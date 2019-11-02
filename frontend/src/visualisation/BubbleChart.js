@@ -87,8 +87,8 @@ class BubbleChart extends React.Component {
 
     render() {
         return (
-            <div class="bubbleVisualisation" align="center">
-                <svg class="bubbleVisualisationSvg"></svg>
+            <div className="bubbleVisualisation" align="center">
+                <svg className="bubbleVisualisationSvg"></svg>
             </div>
         )
     }
