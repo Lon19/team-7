@@ -2,6 +2,8 @@ import React from 'react'
 import './style.css'
 import * as d3 from 'd3'
 import axios from 'axios';
+import { timeDay } from 'd3-time';
+import { scaleDivergingPow } from 'd3-scale';
 
 class RadarMap extends React.Component {
     componentDidMount() {
@@ -20,42 +22,90 @@ class RadarMap extends React.Component {
 			////////////////////////////////////////////////////////////// 
 			////////////////////////// Data ////////////////////////////// 
 			////////////////////////////////////////////////////////////// 
-
-            fetch("http://localhost:8000/user/22222222/visualisation/wpforms-Autistica-8211-Work-Self-Confidence")
+            try { var data = fetch("http://localhost:8000/user/22222222/visualisation/wpforms-Autistica-8211-Work-Self-Confidence")
             .then(res => {
-                console.log(res.json());
-                return res;
-            });
-			var data = [
-					  [
-						{axis:"Learning",value:0.52},
-						{axis:"Problem solving",value:0.88},
-						{axis:"Pressure",value:0.49},
-						{axis:"Role expectations",value:0.67},
-						{axis:"Teamwork",value:0.82},
-						{axis:"Sensitivity",value:0.32},
-						{axis:"Work politics",value:0.11},		
-					  ]
-					];
+                return res.json();
+            })
+            .then(res =>{
+                var d = []; 
+                d[0] = []; 
+                d[1] = []; 
+                d[2] = []; 
+                d[3] = []; 
+                d[4] = []; 
+                d[5] = []; 
+                d[6] = [];
+                d[0]["axis"] = "Learning"; d[0]["value"] = 0;
+                d[1]["axis"] = "Problem solving"; d[1]["value"] = 0;
+                d[2]["axis"] = "Pressure"; d[2]["value"] = 0;
+                d[3]["axis"] = "Role expectations"; d[3]["value"] = 0;
+                d[4]["axis"] = "Teamwork"; d[4]["value"] = 0;
+                d[5]["axis"] = "Sensitivity"; d[5]["value"] = 0;
+                d[6]["axis"] = "Work politics"; d[6]["value"] = 0;
+                var sum = 0;
+                for(var i = 0; i < res.length; i++) {
+                    var lsum = 0;
+                    for(var j = 0; j < res[i]["response"].length; j++) {
+                        if(res[i]["response"][j] >= 0 && res[i]["response"][j] < 3) {
+                            lsum += parseInt(res[i]["response"][j]); }
+                    } 
+                    sum += lsum; 
+                    if(i==5||i==13||i==23||i==26) d[0]["value"] += lsum;
+                    if(i==10||i==15||i==16||i==17||i==22||i==24) d[1]["value"] += lsum;
+                    if(i==6||i==11||i==20||i==28) d[2]["value"] += lsum;
+                    if(i==1||i==3||i==9||i==21) d[3]["value"] += lsum;
+                    if(i==2||i==8||i==14||i==25) d[4]["value"] += lsum;
+                    if(i==18||i==27||i==29||i==30) d[5]["value"] += lsum;
+                    if(i==4||i==7||i==12||i==19) d[6]["value"] += lsum;
+                }console.log(sum);
+                d[0]["value"] = parseFloat((d[0]["value"] / sum).toFixed(2));
+                d[1]["value"] = parseFloat((d[1]["value"] / sum).toFixed(2));
+                d[2]["value"] = parseFloat((d[2]["value"] / sum).toFixed(2));
+                d[3]["value"] = parseFloat((d[3]["value"] / sum).toFixed(2));
+                d[4]["value"] = parseFloat((d[4]["value"] / sum).toFixed(2));
+                d[5]["value"] = parseFloat((d[5]["value"] / sum).toFixed(2));
+                d[6]["value"] = parseFloat((d[6]["value"] / sum).toFixed(2));
+
+                
+                //Call function to draw the Radar chart
+                console.log(d);
+                return [d]; 
+            })
+            .then(res => {
+                var color = d3.scaleOrdinal()
+				    .range(["#00A0B0"]);
+                    
+                var radarChartOptions = {
+                w: width,
+                h: height,
+                margin: margin,
+                maxValue: 0.5,
+                levels: 5,
+                roundStrokes: true,
+                color: color
+                };
+                RadarChart(".radarChart", res, radarChartOptions);
+                return res; 
+                    
+            }); } catch(err) {
+                console.log(err);
+            }
+			// var data = [
+			// 		  [
+			// 			{axis:"Learning",value:0.52},
+			// 			{axis:"Problem solving",value:0.88},
+			// 			{axis:"Pressure",value:0.49},
+			// 			{axis:"Role expectations",value:0.67},
+			// 			{axis:"Teamwork",value:0.82},
+			// 			{axis:"Sensitivity",value:0.32},
+			// 			{axis:"Work politics",value:0.11},		
+			// 		  ]
+			// 		];
 			////////////////////////////////////////////////////////////// 
 			//////////////////// Draw the Chart ////////////////////////// 
 			////////////////////////////////////////////////////////////// 
 
-			var color = d3.scaleOrdinal()
-				.range(["#00A0B0"]);
-				
-			var radarChartOptions = {
-			  w: width,
-			  h: height,
-			  margin: margin,
-			  maxValue: 0.5,
-			  levels: 5,
-			  roundStrokes: true,
-			  color: color
-			};
-			//Call function to draw the Radar chart
-            RadarChart(".radarChart", data, radarChartOptions);
-            
+			
             function RadarChart(id, data, options) {
                 var cfg = {
                  w: 600,				//Width of the circle
@@ -81,8 +131,8 @@ class RadarMap extends React.Component {
                 }//if
                 
                 //If the supplied maxValue is smaller than the actual one, replace by the max in the data
-                var maxValue = 1; //Math.max(cfg.maxValue, d3.max(data, function(i){return d3.max(i.map(function(o){return o.value;}))}));
-                    
+                var maxValue = Math.max(cfg.maxValue, d3.max(data, function(i){return d3.max(i.map(function(o){return o.value;}))}));
+                   
                 var allAxis = (data[0].map(function(i, j){return i.axis})),	//Names of each axis
                     total = allAxis.length,					//The number of different axes
                     radius = Math.min(cfg.w/2, cfg.h/2), 	//Radius of the outermost circle
@@ -92,7 +142,7 @@ class RadarMap extends React.Component {
                 //Scale for the radius
                 var rScale = d3.scaleLinear()
                     .range([0, radius])
-                    .domain([0, maxValue]);
+                    .domain([0, maxValue/2]);
                     
                 /////////////////////////////////////////////////////////
                 //////////// Create the container SVG and g /////////////
