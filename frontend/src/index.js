@@ -38,14 +38,14 @@ const routing = (
             <Container>
             <Switch>
                 <Route exact path="/" component={App} />
-                <Route path="/user/:id" component={User} />
-                <Route path="/researcher" component={Researcher} />
-                <Route path="/vis" component={BubbleChart} />
-                <Route path="/vis2" component={RadarMap} />
-                <Route path="/vis3" component={PieChart} />
-                <Route exact path="/user/:id/mentalhealth" component={MentalHealth} />
-                <Route exact path="/user/:id/organisationalculture" component={OrganisationalCulture} />
-                <Route exact path="/user/:id/workselfconfidence" component={WorkSelfConfidence} />
+                <Route exact path="/user/:id" component={User} />
+                <Route exact path="/researcher" component={Researcher} />
+                <Route exact path="/vis" component={BubbleChart} />
+                <Route exact path="/vis2" component={RadarMap} />
+                <Route exact path="/vis3" component={PieChart} />
+                <Route exact path="/user/:id/mentalhealth" component={BubbleChart} />
+                <Route exact path="/user/:id/organisationalculture" component={PieChart} />
+                <Route exact path="/user/:id/workselfconfidence" component={RadarMap} />
                 <Route exact path="/user/:id/adjustments" component={Adjustments} />
 
                 <Route component={Notfound} />
