@@ -4,11 +4,28 @@ import { Form, Button, Container, FormGroup, FormControl, ControlLabel } from "r
 class App extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            userID: ''
+        }
         this.handleLogin = this.handleLogin.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+
     }
     handleLogin() {
-        let path = '/user/1' ;
+        // event.preventDefault();
+        let path = '/user/' + this.state.userID  ;
         this.props.history.push(path);
+    }
+    handleKeyPress = (event) => {
+        // console.log(id)
+        if(event.key === 'Enter'){
+            this.handleLogin();
+        }
+    }
+
+    handleInputChange(event) {
+        this.setState({userID: event.target.value})
     }
     render() {
         return (
@@ -16,18 +33,10 @@ class App extends React.Component {
                 <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>User ID</Form.Label>
-                    <Form.Control type="email" placeholder="Enter user ID" />
+                    <Form.Control type="text" name="userID" placeholder="Enter user ID" value={this.state.userID} onChange={this.handleInputChange.bind(this)} onKeyPress={this.handleKeyPress}/>
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-
-                {/*<Form.Group controlId="formBasicPassword">*/}
-                {/*    <Form.Label>Password</Form.Label>*/}
-                {/*    <Form.Control type="password" placeholder="Password" />*/}
-                {/*</Form.Group>*/}
-                {/*<Form.Group controlId="formBasicCheckbox">*/}
-                {/*    <Form.Check type="checkbox" label="Check me out" />*/}
-                {/*</Form.Group>*/}
                 <Button variant="primary" type="button" onClick = {this.handleLogin}>
                     Login
                 </Button>
