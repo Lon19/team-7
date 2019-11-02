@@ -1,13 +1,9 @@
 from django.db import models
 
-file = "../../Sample Data/wpforms-Autistica-8211-Work-Self-Confidence-10-29-2019.csv"
-
-
 class Questionnaire(models.Model):
     questionnaireName = models.CharField(max_length=200)
 
 class QuestionType(models.Model):
-    #questionTypeID = models.IntegerField()
     questionTypeName = models.CharField(max_length=200)
 
 class Question(models.Model):
