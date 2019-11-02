@@ -21,7 +21,7 @@ class DataParser():
                 else:
                     self.responses.append(row)
                 count += 1
-                
+
 
     def getQuestions(self):
         questionResponse = []
@@ -31,16 +31,16 @@ class DataParser():
             questionResponse.append(json.dumps({'username': self.questions[2]}))
             questionResponse.append(json.dumps({'iD': self.questions[-2]}))
             questionResponse.append(json.dumps({'date': self.questions[-1]}))
-                                    
-            for i in range(3,len(self.questions)-2):        
+
+            for i in range(3,len(self.questions)-2):
                 questionJSON = {}
                 questionJSON['questionText'] = self.questions[i]
                 questionJSON['questionType'] = 1 # Hard coded for now
                 questionResponse.append(json.dumps(questionJSON))
 
         else:
-            
-        
+
+
         return questionResponse
 
     def getResponses(self):
