@@ -10,11 +10,20 @@ def index(request, user_id):
 def user_home(request, user_id):
     return HttpResponse()
 
-def user_questionnaire(request, user_id, questionnaire_id): #request, questionnaire-id
-    print(request)
+def user_questionnaire(request, user_id, questionnaire_name): #request, questionnaire-id
+    parser = DataParser()
+    parser.parseFile("Sample Data/" + questionnaire_name + ".csv", False)
+    response = parser.getResponses()
+    for val in response:
+        thing = json.loads(val)
+    thing_json = json.dumps(thing)
+
+    return HttpResponse(thing_json)
+
+
     return HttpResponse("questions here")
 
-def user_questionnaire_responses(request, user_id, questionnaire_id): #request, questionnaire-id
+def user_questionnaire_responses(request, user_id, questionnaire_name): #request, questionnaire-id
     print(request)
     return HttpResponse("responses here")
 
@@ -30,6 +39,7 @@ def getUsers(request):
     response = parser.getQuestions()
     for val in response:
         thing = json.loads(val)
+        thing2 = json.dumps(thing)
         newU = User()
         newU.userID = thing['id']
         newU.gender = thing['gender']
@@ -42,4 +52,4 @@ def getUsers(request):
         newU.email = thing['email']
         newU.save()
 
-    return HttpResponse("okaaaaaaaaaaa!")
+    return HttpResponse(thing2)

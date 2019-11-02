@@ -21,8 +21,6 @@ class User(models.Model):
     ethnicity = models.CharField(max_length=100)
     password = models.CharField(max_length=64)
 
-
-
 class AnswerType(models.Model):
     answerTypeID= models.IntegerField(primary_key=True)
     questionTypeID= models.ForeignKey(QuestionType, on_delete=models.CASCADE)
