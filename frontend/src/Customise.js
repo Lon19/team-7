@@ -53,8 +53,7 @@ class Customise extends React.Component {
                     </Container>
 
                 </div>
-                <button type="button" className="btn btn-lg" style={{ backgroundColor: this.state.colorScheme[0], color: this.state.colorScheme[3] }}>Save</button>
-                <button>hello</button>
+                {/* <button type="button" className="btn btn-lg" style={{ backgroundColor: this.state.colorScheme[0], color: this.state.colorScheme[3] }}>Save</button> */}
             </div>
         )
     }
