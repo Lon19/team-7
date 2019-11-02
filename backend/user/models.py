@@ -15,5 +15,4 @@ class QuestionnaireQuestion(models.Model):
 
 class User(models.Model):
     userID = models.IntegerField
-    gender = models.CharField(max_length)=20
-    age = models.Char
+    gender = models.CharField(max_length=20)
