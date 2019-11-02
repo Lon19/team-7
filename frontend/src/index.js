@@ -44,8 +44,8 @@ const routing = (
                 <Route exact path="/vis2" component={RadarMap} />
                 <Route exact path="/vis3" component={PieChart} />
                 <Route exact path="/user/:id/mentalhealth" component={BubbleChart} />
-                <Route exact path="/user/:id/organisationalculture" component={OrganisationalCulture} />
-                <Route exact path="/user/:id/workselfconfidence" component={WorkSelfConfidence} />
+                <Route exact path="/user/:id/organisationalculture" component={PieChart} />
+                <Route exact path="/user/:id/workselfconfidence" component={RadarMap} />
                 <Route exact path="/user/:id/adjustments" component={Adjustments} />
 
                 <Route component={Notfound} />
