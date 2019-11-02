@@ -51,15 +51,8 @@ class DataParser():
                 questionJSON['password'] = record[7]
                 questionJSON['email'] = record[8]
                 questionResponse.append(json.dumps(questionJSON))
-        
+
         return questionResponse
 
     def getResponses(self):
         return self.responses
-
-
-data = DataParser()
-#data.parseFile("wpforms-Autistica-8211-Mental-Health.csv", False)
-data.parseFile("Participant-attribute-data.csv", True)
-
-print(data.getQuestions())
