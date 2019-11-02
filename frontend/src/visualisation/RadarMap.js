@@ -318,7 +318,7 @@ class RadarMap extends React.Component {
     }
 
     render() {
-        return <div class="radarChart"></div>
+        return <div className="radarChart"></div>
     }
 }
 

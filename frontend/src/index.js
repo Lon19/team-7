@@ -13,7 +13,12 @@ import Researcher from './Researcher'
 import BubbleChart from './visualisation/BubbleChart'
 import Customise from './Customise'
 import RadarMap from './visualisation/RadarMap'
+import PieChart from './visualisation/PieChart'
 import Notfound from './Notfound'
+import MentalHealth from './MentalHealth'
+import OrganisationalCulture from './OrganisationalCulture'
+import WorkSelfConfidence from './WorkSelfConfidence'
+import Adjustments from './Adjustments'
 
 
 const routing = (
@@ -38,7 +43,13 @@ const routing = (
                 <Route exact path="/researcher" component={Researcher} />
                 <Route exact path="/vis" component={BubbleChart} />
                 <Route exact path="/vis2" component={RadarMap} />
+                <Route exact path="/vis3" component={PieChart} />
                 <Route exact path="/user/:id/customise" component={Customise}/>
+                <Route exact path="/user/:id/mentalhealth" component={MentalHealth} />
+                <Route exact path="/user/:id/organisationalculture" component={OrganisationalCulture} />
+                <Route exact path="/user/:id/workselfconfidence" component={WorkSelfConfidence} />
+                <Route exact path="/user/:id/adjustments" component={Adjustments} />
+
                 <Route component={Notfound} />
 
             </Switch>
