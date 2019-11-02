@@ -11,7 +11,6 @@ class App extends React.Component {
         this.handleLogin = this.handleLogin.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
-
     }
     handleLogin() {
         // event.preventDefault();
