@@ -28,7 +28,7 @@ class User(models.Model):
 
 
 class AnswerType(models.Model):
-    answerTypeID= models.IntegerField(primary_key=true)
+    answerTypeID= models.IntegerField(primary_key=True)
     questionTypeID= models.ForeignKey(QuestionType, on_delete=models.CASCADE)
     textRef = models.CharField(max_length=100)
     progRef = models.IntegerField()
