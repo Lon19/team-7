@@ -1,6 +1,7 @@
 import React from 'react'
 import './style.css'
 import * as d3 from 'd3'
+import axios from 'axios';
 
 class RadarMap extends React.Component {
     componentDidMount() {
@@ -20,11 +21,11 @@ class RadarMap extends React.Component {
 			////////////////////////// Data ////////////////////////////// 
 			////////////////////////////////////////////////////////////// 
 
-            // http://localhost:8000/user/22222222/visualisation/wpforms-Autistica-8211-Work-Self-Confidence
             fetch("http://localhost:8000/user/22222222/visualisation/wpforms-Autistica-8211-Work-Self-Confidence")
-                .then(res => console.log(res.json()))
-                .then(res => this.setState({ planets: res }))
-                .catch(() => this.setState({ hasErrors: true }));
+            .then(res => {
+                console.log(res);
+                return res;
+            });
 			var data = [
 					  [
 						{axis:"Learning",value:0.52},
