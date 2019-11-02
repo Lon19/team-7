@@ -1,8 +1,7 @@
 
 /* Split the screen in half */
 .split {
-    cursor: pointer;
-    height: 45%;
+    height: 50%;
     width: 50%;
     position: fixed;
     z-index: 1;
@@ -10,9 +9,13 @@
     padding-top: 20px;
 }
 
+.split img {
+    cursor: pointer;
+}
+
 .left-up {
     left: 0;
-    top: 10%;
+    /* top: 10%; */
 }
 
 .left-down {
@@ -22,7 +25,7 @@
 
 .right-up {
     right: 0;
-    top: 10%;
+    /* top: 10%; */
 }
 
 .right-down {
