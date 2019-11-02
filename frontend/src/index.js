@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Form, Button, Container, Row, Col, Navbar } from "react-bootstrap";
+
 import './index.css';
 import App from './App';
 // import * as serviceWorker from './serviceWorker';
@@ -14,23 +16,26 @@ import Notfound from './Notfound'
 const routing = (
     <Router>
         <div>
-            {/*<ul>*/}
-            {/*    <li>*/}
-            {/*        <Link to="/">Login</Link>*/}
-            {/*    </li>*/}
-            {/*    <li>*/}
-            {/*        <Link to="/user">User</Link>*/}
-            {/*    </li>*/}
-            {/*    <li>*/}
-            {/*        <Link to="/researcher">Researcher</Link>*/}
-            {/*    </li>*/}
-            {/*</ul>*/}
+            <Navbar bg="dark" variant="dark">
+                <Navbar.Brand href="#home">
+                    <img
+                        alt=""
+                        src="../public/logo.jpg"
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                    />{' '}
+                    React Bootstrap
+                </Navbar.Brand>
+            </Navbar>
+            <Container>
             <Switch>
                 <Route exact path="/" component={App} />
                 <Route path="/user/:id" component={User} />
                 <Route path="/researcher" component={Researcher} />
                 <Route component={Notfound} />
             </Switch>
+            </Container>
         </div>
     </Router>
 )
