@@ -11,6 +11,7 @@ import App from './App';
 import User from './User'
 import Researcher from './Researcher'
 import BubbleChart from './visualisation/BubbleChart'
+import RadarMap from './visualisation/RadarMap'
 import Notfound from './Notfound'
 
 
@@ -35,6 +36,7 @@ const routing = (
                 <Route path="/user/:id" component={User} />
                 <Route path="/researcher" component={Researcher} />
                 <Route path="/vis" component={BubbleChart} />
+                <Route path="/vis2" component={RadarMap} />
                 <Route component={Notfound} />
             </Switch>
             </Container>

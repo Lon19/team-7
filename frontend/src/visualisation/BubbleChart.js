@@ -5,10 +5,9 @@ import * as d3 from 'd3'
 class BubbleChart extends React.Component {
     componentDidMount() {
         var width = window.innerWidth*2/5;
-        var d3 = 
-    d3.select(".bubbleVisualisationSvg")
-    .style("width", width)
-    .style("height", width);
+        d3.select(".bubbleVisualisationSvg")
+            .style("width", width)
+            .style("height", width);
     
     var svg = d3.select("svg"),
         margin = 20,
