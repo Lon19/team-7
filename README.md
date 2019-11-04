@@ -3,7 +3,7 @@ This is the GitHub repo for our Code for Good 2019 entry.
 We won the best solution for Autistica, coming 2nd place overall for the event
 
 ###### Teammates
-Will Davitt, Tom Lancaster, Andrew Morton, Ioana, Andreea Bila, Sebastian Stanici.
+Will Davitt, Tom Lancaster, Andrew Morton, Ioana Teju, Andreea Bila, Sebastian Stanici.
 [@willdavitt](https://github.com/willdavitt "Will Davitt"), [@TinkerTavern](https://github.com/TinkerTavern "Tom Lancaster"), [@goninty](https://github.com/goninty "Andrew Morton"), [@Seba7159](https://github.com/Seba7159 "Sebastian Stanici")
 
 ## Task Introduction - Autistica
